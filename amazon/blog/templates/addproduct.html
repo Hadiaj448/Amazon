@@ -1,0 +1,147 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br>
+
+  <div class="w3-card-4 w3-content">
+  <div class="w3-container w3-deep-orange">
+    <h2>Add Product</h2>
+  </div>
+
+<form action="" method="POST" enctype="multipart/form-data" class="w3-container">
+
+        {{form.hidden_tag()}}               
+        <div class="form-group">
+                  {{form.name.label(class="form-control-label")}}
+                  {% if form.name.errors %}
+                  {{form.name(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.name.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.name(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div>  
+              <div class="form-group">
+                  {{form.price.label(class="form-control-label")}}
+                  {% if form.price.errors %}
+                  {{form.price(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.price.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.price(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+                <div class="form-group">
+                  {{form.discount.label(class="form-control-label")}}
+                  {% if form.discount.errors %}
+                  {{form.discount(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.discount.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.discount(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+                <div class="form-group">
+                  {{form.stock.label(class="form-control-label")}}
+                  {% if form.stock.errors %}
+                  {{form.stock(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.stock.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.stock(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+                <div class="form-group">
+                  {{form.desc.label(class="form-control-label")}}
+                  {% if form.desc.errors %}
+                  {{form.desc(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.desc.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.desc(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div>
+
+              
+            <label for="brand">Add Brand</label>
+             <select class="w3-select w3-border" name="brand" id="brand">
+                 <option value="" disabled selected>Choose your option</option>
+                 {% for brand in brands %}
+                 <option value="{{brand.id}}" required>{{brand.name}}</option>
+                 {% endfor %}
+             </select>
+              <br>
+              <label for="category">Add Category</label>
+             <select class="w3-select w3-border" name="category" id="category">
+                 <option value="" disabled selected>Choose your option</option>
+                 {% for category in categories %}
+                 <option value="{{category.id}}" required>{{category.name}}</option>
+                 {% endfor %}
+             </select>
+                <div class="form-group">
+                  {{form.colors.label(class="form-control-label")}}
+                  {% if form.colors.errors %}
+                  {{form.colors(class="form-control form-control-lg is-invalid")}}
+                  <div class="invalid-feedback">
+                      {% for error in form.colors.errors %}
+                      <span>{{error}}</span>
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  {{form.colors(class="form-control form-control-lg ")}}
+                  {% endif %}
+              </div> 
+              <div class="form-group">
+                {{form.image1.label() }}
+                {{form.image1(class="form-control-file")}}
+                {% if form.image1.errors %}
+                
+                    {% for error in form.image1.errors %}
+                    <span class="text-danger">{{error}}</span>
+                    {% endfor %}
+                {% endif %}
+            </div> 
+            <div class="form-group">
+                {{form.image2.label() }}
+                {{form.image2(class="form-control-file")}}
+                {% if form.image2.errors %}
+                
+                    {% for error in form.image2.errors %}
+                    <span class="text-danger">{{error}}</span>
+                    {% endfor %}
+                {% endif %}
+            </div> 
+            <div class="form-group">
+                {{form.image3.label() }}
+                {{form.image3(class="form-control-file")}}
+                {% if form.image3.errors %}
+                
+                    {% for error in form.image3.errors %}
+                    <span class="text-danger">{{error}}</span>
+                    {% endfor %}
+                {% endif %}
+            </div> 
+                  <div class="form-group">
+                      {{form.submit(class="btn btn-outline-primary")}}
+                  </div>
+     </form>
+  </div>
+</div>
+
+{% endblock %}

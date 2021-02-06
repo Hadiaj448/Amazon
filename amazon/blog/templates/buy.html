@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br>
+
+  <div class="w3-card-4 w3-content">
+  <div class="w3-container w3-deep-orange">
+    <h2 style="color: white">ADD Cloth</h2>
+  </div>
+<form action="" method="POST" class="w3-container">
+
+      {{form.hidden_tag()}}
+      
+            <div class="form-group">
+                {{form.username.label(class="form-control-label")}}
+                {% if form.username.errors %}
+                {{form.username(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.username(class="form-control form-control-lg ")}}
+                {% endif %}
+            </div> 
+            <div class="form-group">
+                {{form.add.label(class="form-control-label")}}
+                {% if form.add.errors %}
+                {{form.add(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.add.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.add(class="form-control form-control-lg ")}}
+                {% endif %}
+            </div> 
+            <div class="form-group">
+                {{form.phnum.label(class="form-control-label")}}
+                {% if form.phnum.errors %}
+                {{form.phnum(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.phnum.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.phnum(class="form-control form-control-lg ")}}
+                {% endif %}
+            </div> 
+            <div class="form-group">
+                {{form.clnum.label(class="form-control-label")}}
+                {% if form.clnum.errors %}
+                {{form.clnum(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.clnum.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.clnum(class="form-control form-control-lg ")}}
+                {% endif %}
+            </div> 
+           
+                <b><div class="form-group">
+                    {{form.submit(class="w3-bar-item w3-button w3-black",style="width:100%;color:white;")}}
+                </div></b>
+             <br>
+   </form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

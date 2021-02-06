@@ -1,0 +1,38 @@
+  {% extends 'layout.html' %}
+ {% block content %}
+<br>
+<div class="w3-content">
+  <h2>All Products</h2>
+  
+
+  <table class="w3-table-all">
+    <thead>
+      <tr class="w3-deep-orange">
+        <th>Num</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Discount</th>
+        <th>Brand</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    {% for product in products %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}af</td>
+      <td>{{product.discount}}%</td>
+      <td>{{product.brand.name}}</td>
+      <td><img src="{{url_for('static',filename='img/'+product.image1)}}" width="50" height="40"></td>
+      <td><a href="{{url_for('updateproduct',id=product.id)}}"><button class="w3-button w3-green">Edit</button></a></td>
+      <td><a href="{{url_for('deleteproduct',id=product.id)}}"><button class="w3-button w3-red">Delete</button></a></td>
+    </tr>
+  {% endfor %}
+  </table>
+<br>
+</div>
+ <div class="w3-content "><a  href="{{url_for('get_pdf')}}"><button class="w3-button w3-yellow w3-content">Get PDF</button></a>
+  </div>
+{% endblock %}

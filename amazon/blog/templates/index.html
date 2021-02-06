@@ -1,0 +1,135 @@
+
+  {% extends 'layout.html' %}
+ {% block content %}
+
+ 
+ 
+<div class="w3-panel w3-center">
+<div class="w3-tag w3-jumbo w3-red">N</div>
+<div class="w3-tag w3-jumbo w3-purple">I</div>
+<div class="w3-tag w3-jumbo w3-yellow">K</div>
+<div class="w3-tag w3-jumbo ">E</div>
+</div>
+
+
+<div class="w3-center">
+   <div class="w3-dropdown-click ">
+    <button onclick="myFunction()" class="  w3-button w3-purple">All Brands</button>
+    <div id="Demo" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
+      {% for brand in brands %}
+      <a href="{{url_for('get_brand',id=brand.id)}}" class="w3-bar-item w3-button">{{brand.name}}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="w3-dropdown-click" style="margin-left: 22px">
+    <button onclick="MyFunc()" class="w3-button  w3-purple">Categories</button>
+    <div id="demo" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
+      {% for category in categories %}
+      <a href="{{url_for('get_category',id=category.id)}}" class="w3-bar-item w3-button">{{category.name}}</a>
+      {% endfor %}
+    </div>
+</div>
+</div>
+
+
+
+ <div class="container" id="pro">
+<div class="row">
+ {% for c in category %}
+<div class="col-md-4 mt-4">
+  <div class="card" width="200">
+    <div class="w3-display-topleft w3-black w3-padding">{{c.price}}AF</div>
+    <img src="{{url_for('static',filename='img/'+c.image1)}}" alt="{{c.name}}"  height="250">
+<h3 class="container" >{{c.name}}<a href="{{url_for('single_page',id=c.id)}}"><button class=" w3-right w3-button w3-xlarge w3-circle w3-red w3-card-4">+</button></a>
+</h3> 
+  </div>
+</div>
+  
+{% endfor %}
+
+ </div>
+ </div>
+
+
+
+
+
+ <div class="container" id="pro">
+<div class="row">
+ {% for b in brand %}
+<div class="col-md-4 mt-4">
+  <div class="card" width="200">
+    <div class="w3-display-topleft w3-black w3-padding">{{b.price}}AF</div>
+    <img src="{{url_for('static',filename='img/'+b.image1)}}" alt="{{b.name}}"  height="250">
+<h3 class="container" >{{b.name}}<a href="{{url_for('single_page',id=b.id)}}"><button class=" w3-right w3-button w3-xlarge w3-circle w3-red w3-card-4">+</button></a>
+</h3> 
+  </div>
+</div>
+  
+{% endfor %}
+
+ </div>
+ </div>
+
+
+
+
+
+
+ <div class="container" id="pro">
+<div class="row">
+ {% for product in products %}
+<div class="col-md-4 mt-4">
+	<div class="card" width="200">
+		<div class="w3-display-topleft w3-black w3-padding">{{product.price}}AF</div>
+		<img src="{{url_for('static',filename='img/'+product.image1)}}" alt="{{product.name}}"  height="250">
+<h3 class="container" >{{product.name}}<a href="{{url_for('single_page',id=product.id)}}"><button class=" w3-right w3-button w3-xlarge w3-circle w3-red w3-card-4">+</button></a>
+</h3> 
+	</div>
+</div>
+  {% endfor %}
+
+ </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function myFunction() {
+    var x = document.getElementById("Demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+
+<script>
+function MyFunc() {
+    var x = document.getElementById("demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+
+
+
+
+{% endblock %}

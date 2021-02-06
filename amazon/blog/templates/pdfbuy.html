@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+<style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+.w3-purple{
+  background-color: dodgerblue;
+  color:white;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+
+<br>
+<div class="w3-content">
+  <h2>All Buys</h2>
+  
+
+  <table >
+    <thead class="w3-purple">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Addrass</th>
+        <th>PhoneNum</th>
+        <th>NumOfClothes</th>
+        <th>Price</th>
+        <th>Time</th>
+
+      </tr>
+    </thead>
+    {% for buy in buys %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{buy.username}}</td>
+      <td>{{buy.add}}</td>
+      <td>{{buy.phnum}}</td>
+      <td>{{buy.clnum}}</td>
+      {% if buy.clnum>1 %}
+      {% set subtotal =buy.clnum|int*buy.price|float %}
+      <td>{{subtotal}}</td>
+      {% else %}
+      <td></td>
+      {% endif %}
+      <td>{{buy.date.strftime('%Y-%m-%d')}}</td>
+  </tr> 
+  {% endfor %}
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><b>Sum Of All Prices</b></td>
+  <td><b>{{x}}Af</b></td>
+  <td></td>
+
+</tr>
+  </table>
+</div>
+</body>
+</html>

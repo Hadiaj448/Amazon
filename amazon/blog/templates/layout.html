@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/w3.css">
+</head>
+<body>
+
+
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+
+
+<div class="w3-sidebar w3-bar-block w3-border-right w3-red w3-bar-block w3-animate-left" style="display:none;z-index:5" id="mySidebar">
+
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+
+  <a href="/" class="w3-bar-item w3-button">Home</a>
+   {% if current_user.is_authenticated %}
+
+ 
+ <button class="w3-button w3-block w3-left-align" onclick="myAccFunc()">
+  Brands And Categories 
+  </button>
+    <div id="demoAcc" class="w3-hide w3-white w3-card">
+      <a href="/brands" class="w3-bar-item w3-button">Brands</a>
+      <a href="/categories" class="w3-bar-item w3-button">Categories</a>
+      <a href="/brand" class="w3-bar-item w3-button">Add Brand</a>
+      <a href="/category" class="w3-bar-item w3-button">Add Category</a>
+    </div>
+    
+
+    <button class="w3-button w3-block w3-left-align" onclick="AccFunc()">
+    Products 
+    </button>
+  
+    <div id="demo" class="w3-hide w3-white w3-card">
+      <a href="/addproduct" class="w3-bar-item w3-button">Add Product</a>
+      <a href="/products" class="w3-bar-item w3-button">Products</a>
+    </div>
+       <a href="/buys" class="w3-bar-item w3-button">Buys</a>
+
+
+
+   <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+   {% else %}
+  <a href="/register" class="w3-bar-item w3-button">Register</a>
+  <a href="/login" class="w3-bar-item w3-button">Login</a>
+  {% endif %}
+</div>
+
+<!-- Page Content -->
+<div class="w3-red">
+
+  <button class="w3-button w3-red w3-xlarge" onclick="w3_open()">☰</button>
+  
+</div>
+<script>
+function w3_open() {
+   document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+
+
+function myAccFunc() {
+    var x = document.getElementById("demoAcc");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-green", "");
+    }
+}
+
+
+function AccFunc() {
+    var x = document.getElementById("demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-green", "");
+    }
+}
+</script>
+{% with messages=get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category,message in messages %}
+      <div class="alert alert-{{category}}">
+        {{message}}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    {% block content %}
+    {% endblock %}
+    <script src="../static/w3.js" type="text/javascript"></script>
+
+</body>
+</html>

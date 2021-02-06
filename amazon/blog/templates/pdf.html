@@ -1,0 +1,52 @@
+
+
+<style>
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+.w3-purple{
+  background-color: dodgerblue;
+  color:white;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+</style>
+<br>
+<div class="w3-content">
+  <h2>All Products</h2>
+  
+
+  <table class="w3-table-all">
+    <thead>
+      <tr class="w3-purple">
+        <th>Num</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Discount</th>
+        <th>Brand</th>
+        
+      </tr>
+    </thead>
+    {% for product in products %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}af</td>
+      <td>{{product.discount}}%</td>
+      <td>{{product.brand.name}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+<br>
+</div>
+  </div>

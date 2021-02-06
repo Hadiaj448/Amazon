@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<br>
+
+  <div class="w3-card-4 w3-content">
+  <div class="w3-container w3-deep-orange">
+    <h2>Join To Nike</h2>
+  </div>
+<form action="" method="POST" class="w3-container">
+
+      {{form.hidden_tag()}}
+      
+            <div class="form-group">
+                {{form.email.label(class="form-control-label")}}
+                {% if form.email.errors %}
+                {{form.email(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.email(class="form-control form-control-lg ")}}
+                {% endif %}
+            </div> 
+            <div class="form-group">
+                {{form.password.label(class="form-control-label")}}
+                {% if form.password.errors %}
+                {{form.password(class="form-control form-control-lg is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{form.password(class="form-control form-control-lg ")}}
+                {% endif %}
+            </div> 
+           
+                <div class="form-group">
+                    {{form.submit(class="w3-bar-item w3-button w3-teal",style="width:100%")}}
+                </div>
+             <br>
+   </form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
